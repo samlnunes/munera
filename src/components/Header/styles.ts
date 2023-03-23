@@ -8,6 +8,8 @@ export const Container = styled.header`
   background-color: #ffffff;
   width: 100%;
   padding: 0 30px;
+  position: fixed;
+  top: 0;
 
   img {
     width: 50px;
@@ -18,6 +20,7 @@ export const Nav = styled.nav`
   width: 50vw;
   height: 100%;
   display: flex;
+  margin-left: 40px;
 
   ul {
     width: 100%;
@@ -38,7 +41,7 @@ export const Nav = styled.nav`
     a {
       font-style: normal;
       font-weight: 500;
-      font-size: 16px;
+      font-size: 14px;
       line-height: 19px;
       color: #65676b;
     }
@@ -60,7 +63,7 @@ export const Notifications = styled.div`
 export const UserProfile = styled.div`
   width: 40px;
   height: 40px;
-  background-image: url('./user-photo.png');
+  background-image: url('./user-profile.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   border-radius: 50%;

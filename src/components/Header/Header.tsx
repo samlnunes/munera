@@ -6,10 +6,10 @@ export default function Header() {
       <img src="/munera-logo.png" alt="" />
       <Nav>
         <ul>
-          <li>
+          <li style={{ borderBottom: "3px solid #1974B9" }}>
             <a href="#">Início</a>
           </li>
-          <li style={{ borderBottom: "3px solid #1974B9" }}>
+          <li>
             <a href="#">Entenda uma oferta pública</a>
           </li>
           <li>

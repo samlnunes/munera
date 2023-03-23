@@ -4,9 +4,9 @@ export const Container = styled.div`
   background: #ffffff;
   border-radius: 10px;
   width: 50vw;
-  margin: 30px auto;
+  margin: 86px auto;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  padding: 30px 22px;
+  padding: 20px 0;
 
   p {
     margin-top: 20px;
@@ -21,6 +21,10 @@ export const Container = styled.div`
     margin-top: 20px;
   }
 `;
+
+export const Content = styled.div`
+  padding: 0 22px;
+`
 
 export const Top = styled.div`
   display: flex;

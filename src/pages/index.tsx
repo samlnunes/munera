@@ -1,5 +1,7 @@
-import Head from 'next/head'
-import { BoxPublic, Header } from '@/components'
+import Head from "next/head";
+import { BoxPublic, Header } from "@/components";
+import { Container } from "@/styles/styles";
+import { BoxLeft } from "@/blocks";
 
 export default function Home() {
   return (
@@ -11,7 +13,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <BoxPublic />
+      <Container>
+        <BoxLeft />
+        <BoxPublic />
+      </Container>
     </>
-  )
+  );
 }
