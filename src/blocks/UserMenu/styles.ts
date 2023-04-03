@@ -38,8 +38,8 @@ export const Box = styled.div`
 `;
 
 export const UserPhoto = styled.div`
-  width: 150px;
-  height: 150px;
+  min-width: 150px;
+  min-height: 150px;
   border-radius: 50%;
   background-image: url("/user-profile.jpg");
   background-repeat: no-repeat;
