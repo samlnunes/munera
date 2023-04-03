@@ -20,7 +20,7 @@ export const Nav = styled.nav`
   width: 50vw;
   height: 100%;
   display: flex;
-  margin-left: 40px;
+  margin-left: 39px;
 
   ul {
     width: 100%;
@@ -37,6 +37,10 @@ export const Nav = styled.nav`
     width: 100%;
     padding: 0 20px;
     white-space: nowrap;
+
+    &.active {
+      border-bottom: 3px solid #1974b9;
+    }
 
     a {
       font-style: normal;
@@ -56,15 +60,17 @@ export const BoxUser = styled.div`
 export const Notifications = styled.div`
   width: 40px;
   height: 40px;
-  background-color: #E4E6EB;
+  background-color: #e4e6eb;
   border-radius: 50%;
 `;
 
-export const UserProfile = styled.div`
+export const UserProfile = styled.button`
   width: 40px;
   height: 40px;
-  background-image: url('./user-profile.jpg');
+  background-image: url("/user-profile.jpg");
   background-repeat: no-repeat;
   background-size: contain;
   border-radius: 50%;
+  border: none;
+  cursor: pointer;
 `;

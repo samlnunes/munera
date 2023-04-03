@@ -3,10 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   background: #ffffff;
   border-radius: 10px;
-  width: 50vw;
-  margin: 86px auto;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   padding: 20px 0;
+  max-width: 50vw;
 
   p {
     margin-top: 20px;
@@ -24,7 +23,7 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   padding: 0 22px;
-`
+`;
 
 export const Top = styled.div`
   display: flex;
@@ -45,7 +44,7 @@ export const Top = styled.div`
     color: #65676b;
   }
 
-  > img {
+  img {
     width: 40px;
     height: 40px;
     border-radius: 50%;

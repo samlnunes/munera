@@ -1,27 +1,39 @@
 import { Container, Top, Content } from "./styles";
+import dayjs from "dayjs";
+import Link from "next/link";
 
-const BoxPublic: React.FC = () => {
+export interface IPublication {
+  icon: string
+  company: string
+  date: string
+  content: string
+  img: string
+  codeCompany: string
+}
+
+const BoxPublic: React.FC<IPublication> = ({
+  company,
+  codeCompany,
+  icon,
+  date,
+  content,
+  img,
+}) => {
   return (
     <Container>
       <Content>
         <Top>
-          <img src="/nu-icon.png" alt="" />
+          <Link href={`/empresas/${codeCompany}`}>
+            <img src={icon} alt="" />
+          </Link>
           <div>
-            <h1>NuInvest</h1>
-            <span>1 hours ago</span>
+            <h1>{company}</h1>
+            <span>{dayjs().diff(dayjs(date), "hour")} hours ago</span>
           </div>
         </Top>
-        <p>
-          Conheça a Nu Invest, a plataforma de investimentos subsidiária do
-          Nubank. Com interface intuitiva e segurança regulamentada pela CVM,
-          permite investimentos em diversos ativos e oferece ferramenta de
-          recomendação personalizada. A plataforma também oferece recursos
-          educacionais para ajudar investidores a tomar decisões informadas. A
-          Nu Invest é a opção ideal para quem busca acessibilidade e inovação
-          nos investimentos.
-        </p>
+        <p>{content}</p>
       </Content>
-      <img src="/BDRsNubank.jpg" alt="" />
+      <img src={img} alt="" />
     </Container>
   );
 };

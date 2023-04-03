@@ -1,1 +1,2 @@
-export { default as BoxLeft } from "./BoxLeft";
+export { default as UserMenu } from "./UserMenu";
+export { default as CompanyInfos } from "./CompanyInfos";

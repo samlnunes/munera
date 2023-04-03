@@ -1,10 +1,11 @@
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import { BoxPublic, Header } from "@/components";
 import { Content, SideBar } from "@/styles/styles";
-import { useEffect, useState } from "react";
+import { CompanyInfos } from "@/blocks";
 import { IPublication } from "@/components/BoxPublic/BoxPublict";
 
-export default function Home() {
+export default function Empresa() {
   const [publications, setPublications] = useState([]);
 
   useEffect(() => {
@@ -25,7 +26,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <SideBar left />
+      <SideBar left>
+        <CompanyInfos />
+      </SideBar>
       <Content>
         {publications.map((publication: IPublication, key) => (
           <BoxPublic
