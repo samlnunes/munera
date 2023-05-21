@@ -10,6 +10,7 @@ export const Container = styled.header`
   padding: 0 30px;
   position: fixed;
   top: 0;
+  z-index: 9;
 
   img {
     width: 50px;

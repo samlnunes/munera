@@ -1,6 +1,7 @@
 import { UserMenu } from "@/blocks";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Link from "next/link";
 import { Container, Nav, BoxUser, UserProfile, Notifications } from "./styles";
 
 export default function Header() {
@@ -23,11 +24,6 @@ export default function Header() {
       label: "Ofertas",
       href: "/ofertas",
     },
-    {
-      id: "empresas",
-      label: "Empresas",
-      href: "/empresas",
-    },
   ];
 
   return (
@@ -47,7 +43,9 @@ export default function Header() {
                     : ""
                 }
               >
-                <a href={item.href}>{item.label}</a>
+                <Link href={item.href} legacyBehavior>
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>

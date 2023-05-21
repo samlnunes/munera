@@ -1,14 +1,15 @@
-import { Container, Top, Content } from "./styles";
-import dayjs from "dayjs";
+import { Container, Top, Content, BoxImage } from "./styles";
+import { dayjsUtc } from "@/helpers";
 import Link from "next/link";
+import Image from "next/image";
 
 export interface IPublication {
-  icon: string
-  company: string
-  date: string
-  content: string
-  img: string
-  codeCompany: string
+  icon: string;
+  company: string;
+  date: string;
+  content: string;
+  img: string;
+  codeCompany: string;
 }
 
 const BoxPublic: React.FC<IPublication> = ({
@@ -19,6 +20,16 @@ const BoxPublic: React.FC<IPublication> = ({
   content,
   img,
 }) => {
+  const formatterDiff = (date: string) => {
+    if (dayjsUtc().diff(dayjsUtc.utc(date).local(), "hour") === 0) {
+      return `${dayjsUtc().diff(
+        dayjsUtc.utc(date).local(),
+        "minute"
+      )} minutes ago`;
+    }
+
+    return `${dayjsUtc().diff(dayjsUtc.utc(date).local(), "hour")} hours ago`;
+  };
   return (
     <Container>
       <Content>
@@ -28,12 +39,16 @@ const BoxPublic: React.FC<IPublication> = ({
           </Link>
           <div>
             <h1>{company}</h1>
-            <span>{dayjs().diff(dayjs(date), "hour")} hours ago</span>
+            <span>{formatterDiff(date)}</span>
           </div>
         </Top>
         <p>{content}</p>
       </Content>
-      <img src={img} alt="" />
+      {img && (
+        <BoxImage>
+          <Image src={img} alt="" width={0} height={0} sizes="100vw" />
+        </BoxImage>
+      )}
     </Container>
   );
 };

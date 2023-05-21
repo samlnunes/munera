@@ -5,7 +5,7 @@ export const Container = styled.div`
   border-radius: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   padding: 20px 0;
-  max-width: 50vw;
+  width: 50vw;
 
   p {
     margin-top: 20px;
@@ -13,11 +13,6 @@ export const Container = styled.div`
     font-size: 15px;
     line-height: 18px;
     color: #6a6a6a;
-  }
-
-  img {
-    max-width: 100%;
-    margin-top: 20px;
   }
 `;
 
@@ -49,5 +44,18 @@ export const Top = styled.div`
     height: 40px;
     border-radius: 50%;
     margin: 0;
+  }
+`;
+
+export const BoxImage = styled.div`
+  background-color: #1c1e21;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+
+  img {
+    max-height: 600px;
+    width: 100%;
+    height: 100%;
   }
 `;

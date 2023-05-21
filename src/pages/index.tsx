@@ -1,20 +1,12 @@
 import Head from "next/head";
-import { BoxPublic, Header } from "@/components";
+
+import { AddPublic, BoxPublic, Header } from "@/components";
 import { Content, SideBar } from "@/styles/styles";
-import { useEffect, useState } from "react";
 import { IPublication } from "@/components/BoxPublic/BoxPublict";
+import { usePosts } from "@/services";
 
 export default function Home() {
-  const [publications, setPublications] = useState([]);
-
-  useEffect(() => {
-    fetch("/api/publications")
-      .then((response) => response.json())
-      .then((publications) => {
-        setPublications(publications);
-      })
-      .catch((error) => console.warn(error));
-  }, []);
+  const { posts, loading, mutate } = usePosts();
 
   return (
     <>
@@ -27,14 +19,15 @@ export default function Home() {
       <Header />
       <SideBar left />
       <Content>
-        {publications.map((publication: IPublication, key) => (
+        <AddPublic mutatePublics={mutate} />
+        {posts?.map((publication: IPublication, key: number) => (
           <BoxPublic
             key={key}
-            company={publication.company}
-            icon={publication.icon}
-            date={publication.date}
-            content={publication.content}
-            img={publication.img}
+            company={"Nome da empresa"}
+            icon={"/nu-icon.png"}
+            date={publication.date_time}
+            content={publication.legenda}
+            img={publication.midia}
             codeCompany={publication.codeCompany}
           />
         ))}

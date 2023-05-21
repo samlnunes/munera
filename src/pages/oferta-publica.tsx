@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { Header } from "@/components";
 import { Content, SideBar } from "@/styles/styles";
+import { Study } from "@/blocks";
 
 export default function OfertaPublica() {
   return (
@@ -14,14 +15,7 @@ export default function OfertaPublica() {
       <Header />
       <SideBar left />
       <Content>
-        <h1 className="soon">
-          Estamos trabalhando para construir essa tela, aguarde.
-        </h1>
-        <img
-          src="/maintenance.png"
-          alt="maintenance"
-          className="maintenance"
-        />
+        <Study />
       </Content>
       <SideBar />
     </>
