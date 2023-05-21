@@ -2,7 +2,7 @@ import Head from "next/head";
 
 import { AddPublic, BoxPublic, Header } from "@/components";
 import { Content, SideBar } from "@/styles/styles";
-import { IPublication } from "@/components/BoxPublic/BoxPublict";
+import { IPublication } from "@/components/BoxPublic/BoxPublic";
 import { usePosts } from "@/services";
 
 export default function Home() {
@@ -23,12 +23,13 @@ export default function Home() {
         {posts?.map((publication: IPublication, key: number) => (
           <BoxPublic
             key={key}
-            company={"Nome da empresa"}
-            icon={"/nu-icon.png"}
-            date={publication.date_time}
-            content={publication.legenda}
-            img={publication.midia}
-            codeCompany={publication.codeCompany}
+            empresaName={publication.empresaName}
+            icon={`https://munera.s3.sa-east-1.amazonaws.com/logos/${publication.empresaId}-logo.png`}
+            date_time={publication.date_time}
+            legenda={publication.legenda}
+            midia={publication.midia}
+            empresaId={publication.empresaId}
+            curtidas={publication.curtidas}
           />
         ))}
       </Content>

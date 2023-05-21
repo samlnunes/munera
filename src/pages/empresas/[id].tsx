@@ -3,19 +3,20 @@ import { useEffect, useState } from "react";
 import { BoxPublic, Header } from "@/components";
 import { Content, SideBar } from "@/styles/styles";
 import { CompanyInfos } from "@/blocks";
-import { IPublication } from "@/components/BoxPublic/BoxPublict";
+import { IPublication } from "@/components/BoxPublic/BoxPublic";
+import { usePosts } from "@/services";
 
 export default function Empresa() {
-  const [publications, setPublications] = useState([]);
+  const { posts, loading, mutate } = usePosts();
+  const [postagensFiltradas, setPostagensFiltradas] = useState([]);
 
   useEffect(() => {
-    fetch("/api/publications")
-      .then((response) => response.json())
-      .then((publications) => {
-        setPublications(publications);
-      })
-      .catch((error) => console.warn(error));
-  }, []);
+    if (!posts) return;
+
+    setPostagensFiltradas(
+      posts.filter((postagem: any) => postagem.empresaId === 1)
+    );
+  }, [posts]);
 
   return (
     <>
@@ -30,15 +31,16 @@ export default function Empresa() {
         <CompanyInfos />
       </SideBar>
       <Content>
-        {publications.map((publication: IPublication, key) => (
+        {postagensFiltradas?.map((publication: IPublication, key) => (
           <BoxPublic
             key={key}
-            company={publication.company}
-            icon={publication.icon}
-            date={publication.date}
-            content={publication.content}
-            img={publication.img}
-            codeCompany={publication.codeCompany}
+            empresaName={publication.empresaName}
+            icon={`https://munera.s3.sa-east-1.amazonaws.com/logos/${publication.empresaId}-logo.png`}
+            date_time={publication.date_time}
+            legenda={publication.legenda}
+            midia={publication.midia}
+            empresaId={publication.empresaId}
+            curtidas={publication.curtidas}
           />
         ))}
       </Content>

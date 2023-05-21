@@ -59,8 +59,15 @@ export const BoxInfos = styled.div`
 
   > div {
     display: flex;
+    align-items: center;
     gap: 10px;
     margin-top: 10px;
+
+    button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
   }
 
   h1 {

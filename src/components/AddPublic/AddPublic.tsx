@@ -30,6 +30,7 @@ const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
     const payload = {
       legenda: message,
       midia: imageData ?? "",
+      idEmpresa: 1,
     };
 
     fetch(process.env.NEXT_PUBLIC_API_AUTH + "/postagem", {
@@ -42,12 +43,16 @@ const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
       .then((res) => res.json())
       .then(() => {
         mutatePublics();
+        setMessage("");
+        setFiles([]);
+        setShowDropzone(false);
       })
-      .catch((error) => {
-        // Trate o erro, se necessário
-      })
+      .catch((error) => {})
       .finally(() => {
         mutatePublics();
+        setMessage("");
+        setFiles([]);
+        setShowDropzone(false);
       });
   };
 
@@ -119,7 +124,7 @@ const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
     <Container>
       <h1>Publicações</h1>
       <ContentPublic>
-        <CustomTextArea onSubmit={(e) => setMessage(e)} />
+        <CustomTextArea onSubmit={(e) => setMessage(e)} value={message} />
 
         <ButtonImage onClick={() => setShowDropzone(!showDropzone)}>
           <ImageIcon sx={{ color: "#043262" }} />
@@ -136,7 +141,9 @@ const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
         />
       )}
       <BoxButton>
-        <button onClick={() => onSubmit()} disabled={!message}>Publicar</button>
+        <button onClick={() => onSubmit()} disabled={!message}>
+          Publicar
+        </button>
       </BoxButton>
     </Container>
   );

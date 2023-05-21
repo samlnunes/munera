@@ -1,1 +1,1 @@
-export { default } from "./BoxPublict";
+export { default } from "./BoxPublic";

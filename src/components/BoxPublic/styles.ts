@@ -59,3 +59,24 @@ export const BoxImage = styled.div`
     height: 100%;
   }
 `;
+
+export const Favorites = styled.div`
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 20px;
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  span {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #65676b;
+ }
+`;
