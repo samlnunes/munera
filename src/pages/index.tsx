@@ -4,6 +4,7 @@ import { AddPublic, BoxPublic, Header, Loader } from "@/components";
 import { Content, SideBar } from "@/styles/styles";
 import { IPublication } from "@/components/BoxPublic/BoxPublic";
 import { usePosts } from "@/services";
+import Calendar from "react-calendar";
 
 export default function Home() {
   const { posts, loading, mutate } = usePosts();
@@ -34,7 +35,9 @@ export default function Home() {
           />
         ))}
       </Content>
-      <SideBar />
+      <SideBar>
+        <img src="./calendario.png" alt="" />
+      </SideBar>
     </>
   );
 }

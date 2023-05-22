@@ -17,12 +17,12 @@ export default function handler(
 
   const company: Data = {
     id: id as string,
-    company: "NuInvest",
+    company: "Nubank",
     likes: 32,
     icon: "/nu-icon.png",
     brokers: [1, 2, 3],
     description:
-      "NuInvest é a plataforma de investimentos do Nubank pensada para os clientes que buscam por diversificação e variedade de produtos na hora de investir. Tudo isso com o melhor histórico possível: o pioneirismo de mercado e solidez herdados da Easynvest.",
+      "Nubank é a plataforma de investimentos do Nubank pensada para os clientes que buscam por diversificação e variedade de produtos na hora de investir. Tudo isso com o melhor histórico possível: o pioneirismo de mercado e solidez herdados da Easynvest.",
   };
   res.status(200).json(company);
 }

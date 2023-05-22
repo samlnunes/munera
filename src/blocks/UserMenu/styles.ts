@@ -41,7 +41,7 @@ export const UserPhoto = styled.div`
   min-width: 150px;
   min-height: 150px;
   border-radius: 50%;
-  background-image: url("/user-profile.jpg");
+  background-image: url("/nu-icon.png");
   background-repeat: no-repeat;
   background-size: contain;
 `;

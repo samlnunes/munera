@@ -61,6 +61,9 @@ export const BoxUser = styled.div`
 export const Notifications = styled.div`
   width: 40px;
   height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #e4e6eb;
   border-radius: 50%;
 `;
@@ -68,7 +71,7 @@ export const Notifications = styled.div`
 export const UserProfile = styled.button`
   width: 40px;
   height: 40px;
-  background-image: url("/user-profile.jpg");
+  background-image: url("/nu-icon.png");
   background-repeat: no-repeat;
   background-size: contain;
   border-radius: 50%;

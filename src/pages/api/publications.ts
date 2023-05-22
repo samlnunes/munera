@@ -17,7 +17,7 @@ export default function handler(
   const publications: Data[] = [
     {
       id: 1,
-      company: "NuInvest",
+      company: "Nubank",
       codeCompany: "1234",
       date: "2023-04-02T10:02:31",
       content:
@@ -27,7 +27,7 @@ export default function handler(
     },
     {
       id: 2,
-      company: "NuInvest",
+      company: "Nubank",
       codeCompany: "1234",
       date: "2023-04-02T09:02:31",
       content:

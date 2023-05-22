@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import Link from "next/link";
 import { Container, Nav, BoxUser, UserProfile, Notifications } from "./styles";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
 export default function Header() {
   const [menuShow, setMenuShow] = useState(false);
@@ -51,7 +52,9 @@ export default function Header() {
           </ul>
         </Nav>
         <BoxUser>
-          <Notifications />
+          <Notifications>
+            <NotificationsIcon />
+          </Notifications>
           <UserProfile onClick={() => setMenuShow(true)} />
         </BoxUser>
       </Container>

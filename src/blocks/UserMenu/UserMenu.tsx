@@ -11,17 +11,17 @@ const UserMenu: React.FC<PropsMenu> = ({ onClose }) => {
     <Container>
       <Box>
         <UserPhoto />
-        <h1>Samuel Leite</h1>
+        <h1>Nubank</h1>
         <MenuTabs>
           <li>
             <button>Editar cadastro</button>
           </li>
-          <li>
+          {/* <li>
             <button>Alterar senha</button>
           </li>
           <li>
             <button>Ofertas curtidas</button>
-          </li>
+          </li> */}
           <li>
             <button className="active">Minhas datas</button>
           </li>
