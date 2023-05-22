@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import { BoxPublic, Header } from "@/components";
+import { BoxPublic, Header, Loader } from "@/components";
 import { Content, SideBar } from "@/styles/styles";
 import { CompanyInfos } from "@/blocks";
 import { IPublication } from "@/components/BoxPublic/BoxPublic";
@@ -26,6 +26,7 @@ export default function Empresa() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Loader isActive={loading} />
       <Header />
       <SideBar left>
         <CompanyInfos />

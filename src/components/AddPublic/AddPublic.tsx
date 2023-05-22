@@ -8,7 +8,7 @@ import {
 } from "./styles";
 import "react-dropzone-uploader/dist/styles.css";
 import Dropzone, { IFileWithMeta, StatusValue } from "react-dropzone-uploader";
-import { CustomTextArea } from "..";
+import { CustomTextArea, Loader } from "..";
 import ImageIcon from "@mui/icons-material/Image";
 
 interface AddPublicProps {
@@ -25,8 +25,10 @@ const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
   const [message, setMessage] = useState("");
   const [showDropzone, setShowDropzone] = useState(false);
   const [imageData, setImageData] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = () => {
+    setIsLoading(true);
     const payload = {
       legenda: message,
       midia: imageData ?? "",
@@ -47,12 +49,13 @@ const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
         setFiles([]);
         setShowDropzone(false);
       })
-      .catch((error) => {})
+      .catch(() => {})
       .finally(() => {
         mutatePublics();
         setMessage("");
         setFiles([]);
         setShowDropzone(false);
+        setIsLoading(false);
       });
   };
 
@@ -122,6 +125,7 @@ const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
 
   return (
     <Container>
+      <Loader isActive={isLoading} />
       <h1>Publicações</h1>
       <ContentPublic>
         <CustomTextArea onSubmit={(e) => setMessage(e)} value={message} />

@@ -1,4 +1,4 @@
-import { Row, Top, Container } from "./styles";
+import { Top, Container } from "./styles";
 import { TextField } from "../../components";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -6,19 +6,21 @@ import * as yup from "yup";
 
 const Register: React.FC = () => {
   const schema = yup.object().shape({
+    cnpj: yup.string().required("Campo obrigatório"),
     name: yup.string().required("Campo obrigatório"),
-    lastName: yup.string().required("Campo obrigatório"),
     email: yup.string().required("Campo obrigatório"),
     password: yup.string().required("Campo obrigatório"),
     confirmPassword: yup.string().required("Campo obrigatório"),
+    segmento: yup.string().required("Campo obrigatório"),
   });
 
   const defaultValues = {
+    cnpj: "",
     name: "",
-    lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
+    segmento: "",
   };
 
   const { handleSubmit, control, formState, getValues, setValue } = useForm({
@@ -27,35 +29,32 @@ const Register: React.FC = () => {
   });
 
   return (
-    <Container register>
+    <Container>
       <Top>
         <img src="/munera-logo.png" alt="Logo" />
-        <h1>Sua conta para tudo na Munera</h1>
+        <h1>Sua empresa <br />na vitrine</h1>
       </Top>
       <form>
+        <Controller
+          control={control}
+          name="cnpj"
+          render={({ field }) => (
+            <TextField
+              {...field}
+              placeholder="CNPJ"
+              mask={"99.999.999/9999-99"}
+              error={formState.errors.cnpj ? formState.errors.cnpj.message : ""}
+            />
+          )}
+        />
         <Controller
           control={control}
           name="name"
           render={({ field }) => (
             <TextField
               {...field}
-              placeholder="Nome"
+              placeholder="Razão Social"
               error={formState.errors.name ? formState.errors.name.message : ""}
-            />
-          )}
-        />
-        <Controller
-          control={control}
-          name="lastName"
-          render={({ field }) => (
-            <TextField
-              {...field}
-              placeholder="Sobrenome"
-              error={
-                formState.errors.lastName
-                  ? formState.errors.lastName.message
-                  : ""
-              }
             />
           )}
         />
@@ -69,6 +68,21 @@ const Register: React.FC = () => {
               type="email"
               error={
                 formState.errors.email ? formState.errors.email.message : ""
+              }
+            />
+          )}
+        />
+        <Controller
+          control={control}
+          name="segmento"
+          render={({ field }) => (
+            <TextField
+              {...field}
+              placeholder="Segmento"
+              error={
+                formState.errors.segmento
+                  ? formState.errors.segmento.message
+                  : ""
               }
             />
           )}

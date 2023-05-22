@@ -18,11 +18,12 @@ export const Row = styled.div`
 `;
 
 export const Container = styled.div<Props>`
-  max-width: ${(props) => (props.register ? "760px" : "380px")};
+  width: ${(props) => (props.register ? "760px" : "380px")};
   margin: 50px auto;
 
   form {
     display: flex;
+    flex-direction: column;
     gap: 10px;
     margin-top: 30px;
     max-width: 100%;
@@ -35,7 +36,7 @@ export const Container = styled.div<Props>`
     }
 
     button {
-      background-color: #000;
+      background-color: #043262;
       border: none;
       text-transform: uppercase;
       border-radius: 3px;

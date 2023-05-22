@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { AddPublic, BoxPublic, Header } from "@/components";
+import { AddPublic, BoxPublic, Header, Loader } from "@/components";
 import { Content, SideBar } from "@/styles/styles";
 import { IPublication } from "@/components/BoxPublic/BoxPublic";
 import { usePosts } from "@/services";
@@ -18,6 +18,7 @@ export default function Home() {
       </Head>
       <Header />
       <SideBar left />
+      <Loader isActive={loading} />
       <Content>
         <AddPublic mutatePublics={mutate} />
         {posts?.map((publication: IPublication, key: number) => (

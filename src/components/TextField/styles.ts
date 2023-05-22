@@ -20,6 +20,7 @@ const labelFloat = css`
 export const Parent = styled.div<InputStyleProps>`
   position: relative;
   display: flex;
+  height: 56px;
   flex-direction: column;
 
   input[type="email"] {
@@ -35,7 +36,7 @@ export const Parent = styled.div<InputStyleProps>`
     border-radius: 2px;
     line-height: 22px;
     font-size: 16px;
-    height: 40px;
+    height: 56px;
     max-width: 100%;
 
     &:disabled {
@@ -57,6 +58,35 @@ export const Parent = styled.div<InputStyleProps>`
         ${labelFloat}
       }
     }
+  }
+
+  label {
+    color: #000;
+    cursor: text;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    left: 15px;
+    position: absolute;
+    top: 18px;
+    transition: all 0.25s ease;
+
+    &.label-height {
+      top: 15px;
+    }
+
+    ${({ error }) =>
+      error &&
+      css`
+        color: red !important;
+        ${labelFloat}
+      `}
+
+    ${({ filled }) =>
+      filled &&
+      css`
+        ${labelFloat}
+      `}
   }
 `;
 

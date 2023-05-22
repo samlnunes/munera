@@ -120,7 +120,7 @@ import React, {
   
           <Placeholder
             error={!!error}
-            htmlFor={name}
+            htmlFor={id}
             className={className}
             filled={value != undefined && value !== ''}
           >

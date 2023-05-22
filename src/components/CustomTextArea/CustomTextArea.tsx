@@ -23,7 +23,6 @@ const Textarea: React.FC<TextareaProps> = ({ onSubmit, value }) => {
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     adjustHeight();
-    // Você também pode lidar com qualquer outra lógica relacionada à mudança de valor da textarea aqui
   };
 
   return (

@@ -1,9 +1,8 @@
 import Head from "next/head";
-import { Header } from "@/components";
 import { Content, SideBar } from "@/styles/styles";
-import { Register } from "@/blocks";
+import Register from "@/blocks/Register/RegisterInterprise";
 
-export default function Cadastro() {
+export default function CadastroEmpresa() {
   return (
     <>
       <Head>
