@@ -191,7 +191,7 @@ const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
     <Container>
       <Loader isActive={isLoading} />
       <h1>Publicações</h1>
-      <video ref={videoRef} />
+      <video ref={videoRef} autoPlay />
       <button onClick={startCamera}>Iniciar Câmera</button>
       <button onClick={toggleFullscreen}>
         {isFullscreen ? "Sair da Tela Cheia" : "Tela Cheia"}
