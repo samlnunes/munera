@@ -27,9 +27,8 @@ const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
   const [showDropzone, setShowDropzone] = useState(false);
   const [imageData, setImageData] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [photoData, setPhotoData] = useState("");
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const startCamera = async () => {
     try {
@@ -37,57 +36,29 @@ const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
-        videoRef.current.play();
+        videoRef.current.addEventListener("click", () => {
+          if (videoRef.current) {
+            videoRef.current.play();
+          }
+        });
       }
     } catch (error) {
       console.error("Erro ao acessar a câmera:", error);
     }
   };
 
-  const toggleFullscreen = () => {
-    if (videoRef.current) {
-      if (!isFullscreen) {
-        const videoElement = videoRef.current as any;
-        if (videoElement.requestFullscreen) {
-          videoElement.requestFullscreen();
-        } else if (videoElement.mozRequestFullScreen) {
-          videoElement.mozRequestFullScreen();
-        } else if (videoElement.webkitRequestFullscreen) {
-          videoElement.webkitRequestFullscreen();
-        } else if (videoElement.msRequestFullscreen) {
-          videoElement.msRequestFullscreen();
-        }
-      } else {
-        const documentElement = document.documentElement as any;
-        if (documentElement.exitFullscreen) {
-          documentElement.exitFullscreen();
-        } else if (documentElement.mozCancelFullScreen) {
-          documentElement.mozCancelFullScreen();
-        } else if (documentElement.webkitExitFullscreen) {
-          documentElement.webkitExitFullscreen();
-        } else if (documentElement.msExitFullscreen) {
-          documentElement.msExitFullscreen();
-        }
-      }
-      setIsFullscreen(!isFullscreen);
-    }
-  };
-
   const takePhoto = () => {
-    const video = videoRef.current;
-    const canvas = canvasRef.current;
-
-    if (video && canvas) {
+    if (videoRef.current && videoRef.current.srcObject) {
+      const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
-      if (context) {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const video = videoRef.current;
 
-        const photoData = canvas.toDataURL("image/png");
-        // Faça o que precisar com a foto capturada (por exemplo, exiba-a em uma imagem)
-        console.log(photoData);
-      }
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      context!.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      const photoData = canvas.toDataURL("image/png");
+      setPhotoData(photoData);
     }
   };
 
@@ -191,24 +162,10 @@ const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
     <Container>
       <Loader isActive={isLoading} />
       <h1>Publicações</h1>
-      <video ref={videoRef} autoPlay />
+      <video ref={videoRef} autoPlay></video>
+      {photoData && <img src={photoData} alt="Foto Tirada" />}
       <button onClick={startCamera}>Iniciar Câmera</button>
-      <button onClick={toggleFullscreen}>
-        {isFullscreen ? "Sair da Tela Cheia" : "Tela Cheia"}
-      </button>
-      {isFullscreen && (
-        <div
-          style={{
-            position: "absolute",
-            top: "10px",
-            left: "10px",
-            zIndex: 9999,
-          }}
-        >
-          <canvas ref={canvasRef} style={{ display: "none" }} />
-          <button onClick={takePhoto}>Capturar Foto</button>
-        </div>
-      )}
+      <button onClick={takePhoto}>Tirar Foto</button>
       <ContentPublic>
         <CustomTextArea onSubmit={(e) => setMessage(e)} value={message} />
 
