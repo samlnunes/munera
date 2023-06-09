@@ -13,7 +13,7 @@ export default function Cadastro() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SideBar left />
-      <Content>
+      <Content style={{ marginTop: 0, height: "100vh" }}>
         <Register />
       </Content>
       <SideBar />

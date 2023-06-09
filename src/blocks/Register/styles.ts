@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-interface Props {
-  register?: boolean;
-}
-
 export const Row = styled.div`
   display: flex;
   gap: 10px;
@@ -17,14 +13,14 @@ export const Row = styled.div`
   }
 `;
 
-export const Container = styled.div<Props>`
-  width: ${(props) => (props.register ? "760px" : "380px")};
-  margin: 50px auto;
+export const Container = styled.div`
+  width: 380px;
+  margin: auto;
 
   form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     margin-top: 30px;
     max-width: 100%;
 
@@ -67,8 +63,8 @@ export const Container = styled.div<Props>`
   p {
     font-size: 12px;
     line-height: 14px;
-    text-align: center;
-    margin-top: 30px;
+    margin: 0;
+    margin-top: -7px;
   }
 `;
 
@@ -86,6 +82,7 @@ export const Top = styled.div`
     text-transform: uppercase;
     text-align: center;
     margin-top: 40px;
+    color: #043262;
   }
 
   img {

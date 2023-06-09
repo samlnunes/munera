@@ -1,5 +1,5 @@
 import { Row, Top, Container } from "./styles";
-import { TextField } from "../../components";
+import { TextField } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -26,21 +26,26 @@ const Register: React.FC = () => {
     resolver: yupResolver(schema),
   });
 
+  const onSubmit = (values: any) => {
+    console.log("values", values);
+  };
+
   return (
-    <Container register>
+    <Container>
       <Top>
         <img src="/munera-logo.png" alt="Logo" />
         <h1>Sua conta para tudo na Munera</h1>
       </Top>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           control={control}
           name="name"
           render={({ field }) => (
             <TextField
               {...field}
-              placeholder="Nome"
-              error={formState.errors.name ? formState.errors.name.message : ""}
+              label="Nome"
+              error={!!formState.errors.name}
+              helperText={formState?.errors?.name?.message}
             />
           )}
         />
@@ -50,12 +55,9 @@ const Register: React.FC = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              placeholder="Sobrenome"
-              error={
-                formState.errors.lastName
-                  ? formState.errors.lastName.message
-                  : ""
-              }
+              label="Sobrenome"
+              error={!!formState.errors.lastName}
+              helperText={formState?.errors?.lastName?.message}
             />
           )}
         />
@@ -65,11 +67,10 @@ const Register: React.FC = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              placeholder="E-mail"
+              label="E-mail"
               type="email"
-              error={
-                formState.errors.email ? formState.errors.email.message : ""
-              }
+              error={!!formState.errors.email}
+              helperText={formState?.errors?.email?.message}
             />
           )}
         />
@@ -79,13 +80,10 @@ const Register: React.FC = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              placeholder="Senha"
+              label="Senha"
               type="password"
-              error={
-                formState.errors.password
-                  ? formState.errors.password.message
-                  : ""
-              }
+              error={!!formState.errors.password}
+              helperText={formState?.errors?.password?.message}
             />
           )}
         />
@@ -95,17 +93,14 @@ const Register: React.FC = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              placeholder="Confirmar senha"
+              label="Confirmar senha"
               type="password"
-              error={
-                formState.errors.confirmPassword
-                  ? formState.errors.confirmPassword.message
-                  : ""
-              }
+              error={!!formState.errors.confirmPassword}
+              helperText={formState?.errors?.confirmPassword?.message}
             />
           )}
         />
-        <button>Cadastre-se</button>
+        <button type="submit">Cadastre-se</button>
       </form>
     </Container>
   );

@@ -35,9 +35,7 @@ export default function Home() {
           />
         ))}
       </Content>
-      <SideBar>
-        <img src="./calendario.png" alt="" />
-      </SideBar>
+      <SideBar />
     </>
   );
 }

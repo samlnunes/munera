@@ -16,7 +16,7 @@ const Offers: React.FC = () => {
 
   return (
     <Container>
-      {offers?.map((offer, key) => (
+      {offers?.map((offer: any, key: number) => (
         <BoxOffers key={key} logo={offer.logo} title={offer.title} code={offer.codeCompany}/>
       ))}
     </Container>
