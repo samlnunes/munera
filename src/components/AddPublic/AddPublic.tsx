@@ -27,13 +27,15 @@ const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
   const [showDropzone, setShowDropzone] = useState(false);
   const [imageData, setImageData] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [photoData, setPhotoData] = useState();
-  const videoRef = useRef(null);
+  const [photoData, setPhotoData] = useState("");
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const startCamera = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      videoRef.current.srcObject = stream;
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+      }
     } catch (error) {
       console.error("Erro ao acessar a câmera:", error);
     }
@@ -44,14 +46,15 @@ const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
     const context = canvas.getContext("2d");
     const video = videoRef.current;
 
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    context!.drawImage(video, 0, 0, canvas.width, canvas.height);
+    if (video) {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      context!.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-    const photoData = canvas.toDataURL("image/png");
-    setPhotoData(photoData);
-    // Aqui você pode fazer algo com a foto, como enviá-la para o servidor
-    console.log(photoData);
+      const photoData = canvas.toDataURL("image/png");
+      setPhotoData(photoData);
+      console.log(photoData);
+    }
   };
 
   const onSubmit = () => {
