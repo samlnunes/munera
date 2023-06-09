@@ -54,9 +54,10 @@ export const BoxImage = styled.div`
   justify-content: center;
 
   img {
-    max-height: 600px;
-    width: 100%;
-    height: 100%;
+    max-height: 640px;
+    height: auto;
+    max-width: 100%;
+    width: auto;
   }
 `;
 

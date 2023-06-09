@@ -10,6 +10,7 @@ import "react-dropzone-uploader/dist/styles.css";
 import Dropzone, { IFileWithMeta, StatusValue } from "react-dropzone-uploader";
 import { CustomTextArea, Loader } from "..";
 import ImageIcon from "@mui/icons-material/Image";
+import { useRef } from "react";
 
 interface AddPublicProps {
   mutatePublics: any;
@@ -26,6 +27,32 @@ const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
   const [showDropzone, setShowDropzone] = useState(false);
   const [imageData, setImageData] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [photoData, setPhotoData] = useState();
+  const videoRef = useRef(null);
+
+  const startCamera = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      videoRef.current.srcObject = stream;
+    } catch (error) {
+      console.error("Erro ao acessar a câmera:", error);
+    }
+  };
+
+  const takePhoto = () => {
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+    const video = videoRef.current;
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    context!.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    const photoData = canvas.toDataURL("image/png");
+    setPhotoData(photoData);
+    // Aqui você pode fazer algo com a foto, como enviá-la para o servidor
+    console.log(photoData);
+  };
 
   const onSubmit = () => {
     setIsLoading(true);
@@ -127,6 +154,10 @@ const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
     <Container>
       <Loader isActive={isLoading} />
       <h1>Publicações</h1>
+      <video ref={videoRef} autoPlay></video>
+      {photoData && <img src={photoData} alt="Foto Tirada" />}
+      <button onClick={startCamera}>Iniciar Câmera</button>
+      <button onClick={takePhoto}>Tirar Foto</button>
       <ContentPublic>
         <CustomTextArea onSubmit={(e) => setMessage(e)} value={message} />
 
