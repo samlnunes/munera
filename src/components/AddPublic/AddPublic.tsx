@@ -32,9 +32,15 @@ const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
 
   const startCamera = async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      const constraints = { video: true };
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
+        videoRef.current.addEventListener("click", () => {
+          if (videoRef.current) {
+            videoRef.current.play();
+          }
+        });
       }
     } catch (error) {
       console.error("Erro ao acessar a câmera:", error);
@@ -42,11 +48,11 @@ const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
   };
 
   const takePhoto = () => {
-    const canvas = document.createElement("canvas");
-    const context = canvas.getContext("2d");
-    const video = videoRef.current;
+    if (videoRef.current && videoRef.current.srcObject) {
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+      const video = videoRef.current;
 
-    if (video) {
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
       context!.drawImage(video, 0, 0, canvas.width, canvas.height);
