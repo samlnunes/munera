@@ -20,6 +20,11 @@ export const Content = styled.div`
   .maintenance {
     width: 300px;
   }
+
+  @media (max-width: 768px) {
+    gap: 0;
+    margin-top: 56px;
+  }
 `;
 
 export const SideBar = styled.div<Props>`
@@ -29,4 +34,8 @@ export const SideBar = styled.div<Props>`
   top: 76px;
   height: 100%;
   width: 20vw;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;

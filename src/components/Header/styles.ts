@@ -15,6 +15,10 @@ export const Container = styled.header`
   img {
     width: 50px;
   }
+
+  @media (max-width: 768px) {
+    padding: 0 4vw;
+  }
 `;
 
 export const Nav = styled.nav`
@@ -50,6 +54,10 @@ export const Nav = styled.nav`
       line-height: 19px;
       color: #65676b;
     }
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 

@@ -25,15 +25,22 @@ const BoxPublic: React.FC<IPublication> = ({
   curtidas,
 }) => {
   const [curtidasNew, setCurtidasNew] = useState(curtidas);
+
   const formatterDiff = (date: string) => {
-    if (dayjsUtc().diff(dayjsUtc.utc(date).local(), "hour") === 0) {
-      return `${dayjsUtc().diff(
+    if (dayjsUtc().diff(dayjsUtc.utc(date).local(), "hour") < 1) {
+      return `Há ${dayjsUtc().diff(
         dayjsUtc.utc(date).local(),
         "minute"
-      )} minutes ago`;
+      )} minutos`;
     }
 
-    return `${dayjsUtc().diff(dayjsUtc.utc(date).local(), "hour")} hours ago`;
+    if (dayjsUtc().diff(dayjsUtc.utc(date).local(), "hour") < 24)
+      return `Há ${dayjsUtc().diff(dayjsUtc.utc(date).local(), "hour")} horas`;
+
+    if (dayjsUtc().diff(dayjsUtc.utc(date).local(), "day") < 8)
+      return `Há ${dayjsUtc().diff(dayjsUtc.utc(date).local(), "day")} dias`;
+
+    return dayjsUtc.utc(date).local().format('DD [de] MMMM');
   };
 
   return (

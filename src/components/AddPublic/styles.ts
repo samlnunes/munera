@@ -21,6 +21,10 @@ export const Container = styled.div`
     overflow: hidden;
     border: 1px solid #ced0d4;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const ContentPublic = styled.div`

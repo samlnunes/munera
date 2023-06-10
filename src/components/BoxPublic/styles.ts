@@ -14,6 +14,11 @@ export const Container = styled.div`
     line-height: 18px;
     color: #6a6a6a;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    border-radius: 0;
+  }
 `;
 
 export const Content = styled.div`
@@ -79,5 +84,5 @@ export const Favorites = styled.div`
     font-size: 13px;
     line-height: 16px;
     color: #65676b;
- }
+  }
 `;
