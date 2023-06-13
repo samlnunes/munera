@@ -99,4 +99,8 @@ export const UserProfile = styled.button<Props>`
   border: none;
   cursor: pointer;
   font-weight: 700;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
