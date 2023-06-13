@@ -7,18 +7,30 @@ export const Container = styled.div`
   align-items: center;
   gap: 20px;
   padding: 30px;
- 
-  p {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-    color: #65676b;
-  }
 `;
 
 export const Logo = styled.a`
   img {
     width: 80px;
+  }
+`;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  
+  h1 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #65676b;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #6a6a6a;
   }
 `;

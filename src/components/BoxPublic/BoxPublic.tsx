@@ -40,7 +40,7 @@ const BoxPublic: React.FC<IPublication> = ({
     if (dayjsUtc().diff(dayjsUtc.utc(date).local(), "day") < 8)
       return `Há ${dayjsUtc().diff(dayjsUtc.utc(date).local(), "day")} dias`;
 
-    return dayjsUtc.utc(date).local().format('DD [de] MMMM');
+    return dayjsUtc.utc(date).local().format("DD [de] MMMM");
   };
 
   return (
@@ -48,7 +48,7 @@ const BoxPublic: React.FC<IPublication> = ({
       <Content>
         <Top>
           <Link href={`/empresas/${empresaId}`}>
-            <img src={icon} alt="" />
+            <img src={icon} alt="" loading="lazy" />
           </Link>
           <div>
             <h1>{empresaName}</h1>
@@ -59,7 +59,7 @@ const BoxPublic: React.FC<IPublication> = ({
       </Content>
       {midia && (
         <BoxImage>
-          <Image src={midia} alt="" width={0} height={0} sizes="100vw" />
+          <Image src={midia} alt="" width={0} height={0} sizes="100vw" loading="lazy" />
         </BoxImage>
       )}
       <Favorites>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Container,
   ContentPublic,
@@ -10,9 +10,11 @@ import "react-dropzone-uploader/dist/styles.css";
 import Dropzone, { IFileWithMeta, StatusValue } from "react-dropzone-uploader";
 import { CustomTextArea, Loader } from "..";
 import ImageIcon from "@mui/icons-material/Image";
+import LinearProgress from "@mui/material/LinearProgress";
 
 interface AddPublicProps {
   mutatePublics: any;
+  stateMutate: boolean;
 }
 
 interface FileMeta {
@@ -20,19 +22,29 @@ interface FileMeta {
   file: IFileWithMeta;
 }
 
-const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
+const AddPublic: React.FC<AddPublicProps> = ({
+  mutatePublics,
+  stateMutate,
+}) => {
   const [files, setFiles] = useState<FileMeta[]>([]);
   const [message, setMessage] = useState("");
   const [showDropzone, setShowDropzone] = useState(false);
   const [imageData, setImageData] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [idCompany, setIdCompany] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIdCompany(localStorage.getItem("id-company"));
+    }
+  }, []);
 
   const onSubmit = () => {
     setIsLoading(true);
     const payload = {
       legenda: message,
       midia: imageData ?? "",
-      idEmpresa: 1,
+      idEmpresa: idCompany,
     };
 
     fetch(process.env.NEXT_PUBLIC_API_AUTH + "/postagem", {
@@ -125,7 +137,7 @@ const AddPublic: React.FC<AddPublicProps> = ({ mutatePublics }) => {
 
   return (
     <Container>
-      <Loader isActive={isLoading} />
+      {(isLoading || stateMutate) && <LinearProgress />}
       <h1>Publicações</h1>
       <ContentPublic>
         <CustomTextArea onSubmit={(e) => setMessage(e)} value={message} />

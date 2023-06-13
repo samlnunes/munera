@@ -43,20 +43,9 @@ export const Container = styled.div`
       font-weight: 700;
     }
 
-    .cep {
-      position: relative;
-
-      button {
-        position: absolute;
-        right: 15px;
-        top: 0;
-        background-color: transparent;
-        padding: 0;
-
-        svg {
-          color: #000;
-        }
-      }
+    > p {
+      color: #b00020;
+      margin-bottom: 10px;
     }
   }
 
@@ -81,7 +70,7 @@ export const Top = styled.div`
     font-weight: 700;
     text-transform: uppercase;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 20px;
     color: #043262;
   }
 

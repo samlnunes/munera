@@ -20,8 +20,10 @@
     "dayjs": "^1.11.7",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
+    "jwt-decode": "^3.1.2",
     "next": "13.2.4",
     "react": "18.2.0",
+    "react-big-calendar": "^1.8.1",
     "react-calendar": "^4.1.0",
     "react-dom": "18.2.0",
     "react-dropzone-uploader": "2.10.0",
@@ -33,6 +35,7 @@
     "yup": "^1.1.1"
   },
   "devDependencies": {
+    "@types/react-big-calendar": "^1.6.4",
     "@types/react-input-mask": "^3.0.2",
     "@types/styled-components": "^5.1.26"
   }

@@ -18,11 +18,20 @@ export const Container = styled.div`
   @media (max-width: 768px) {
     width: 100%;
     border-radius: 0;
+    padding: 10px 0;
+
+    p {
+      margin-top: 10px;
+    }
   }
 `;
 
 export const Content = styled.div`
   padding: 0 22px;
+
+  @media (max-width: 768px) {
+    padding: 0 10px;
+  }
 `;
 
 export const Top = styled.div`
@@ -84,5 +93,9 @@ export const Favorites = styled.div`
     font-size: 13px;
     line-height: 16px;
     color: #65676b;
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 10px;
   }
 `;

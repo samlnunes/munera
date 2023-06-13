@@ -3,17 +3,18 @@ import { TextField } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import InputMask from "react-input-mask";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-const Register: React.FC = () => {
+const RegisterCompany: React.FC = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [loginError, setLoginError] = useState("");
 
   const schema = yup.object().shape({
+    cnpj: yup.string().required("Campo obrigatório"),
     name: yup.string().required("Campo obrigatório"),
-    lastName: yup.string().required("Campo obrigatório"),
     email: yup.string().required("Campo obrigatório"),
     password: yup.string().required("Campo obrigatório"),
     confirmPassword: yup
@@ -24,8 +25,8 @@ const Register: React.FC = () => {
   });
 
   const defaultValues = {
+    cnpj: "",
     name: "",
-    lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -39,13 +40,15 @@ const Register: React.FC = () => {
 
   const onSubmit = (values: any) => {
     setIsLoading(true);
+
     const payload = {
-      nome: `${values.name} ${values.lastName}`,
+      cnpj: values.cnpj.replace(/[^\d]/g, ""),
       email: values.email,
+      nome: values.name,
       senha: values.password,
     };
 
-    fetch(process.env.NEXT_PUBLIC_API_AUTH + "/clientes", {
+    fetch(process.env.NEXT_PUBLIC_API_AUTH + "/empresas", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +63,7 @@ const Register: React.FC = () => {
         }
       })
       .then(() => {
-        router.push("/login");
+        router.push("/login-empresa");
       })
       .catch((e) => {
         console.log("e", e);
@@ -74,31 +77,39 @@ const Register: React.FC = () => {
     <Container>
       <Top>
         <img src="/munera-logo.png" alt="Logo" loading="lazy" />
-        <h1>Sua conta para tudo na Munera</h1>
+        <h1>
+          Sua empresa <br />
+          na vitrine
+        </h1>
       </Top>
       <form onSubmit={handleSubmit(onSubmit)}>
         {loginError && <p>{loginError}</p>}
+        <Controller
+          control={control}
+          name="cnpj"
+          render={({ field }) => (
+            <InputMask mask={"99.999.999/9999-99"} maskChar={null} {...field}>
+              {/* @ts-ignore */}
+              {(inputProps: any) => (
+                <TextField
+                  {...inputProps}
+                  label="CNPJ*"
+                  error={!!formState.errors.cnpj}
+                  helperText={formState?.errors?.cnpj?.message}
+                />
+              )}
+            </InputMask>
+          )}
+        />
         <Controller
           control={control}
           name="name"
           render={({ field }) => (
             <TextField
               {...field}
-              label="Nome"
+              label="Razão Social*"
               error={!!formState.errors.name}
               helperText={formState?.errors?.name?.message}
-            />
-          )}
-        />
-        <Controller
-          control={control}
-          name="lastName"
-          render={({ field }) => (
-            <TextField
-              {...field}
-              label="Sobrenome"
-              error={!!formState.errors.lastName}
-              helperText={formState?.errors?.lastName?.message}
             />
           )}
         />
@@ -108,7 +119,7 @@ const Register: React.FC = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              label="E-mail"
+              label="E-mail*"
               type="email"
               error={!!formState.errors.email}
               helperText={formState?.errors?.email?.message}
@@ -121,7 +132,7 @@ const Register: React.FC = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              label="Senha"
+              label="Senha*"
               type="password"
               error={!!formState.errors.password}
               helperText={formState?.errors?.password?.message}
@@ -134,7 +145,7 @@ const Register: React.FC = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              label="Confirmar senha"
+              label="Confirmar senha*"
               type="password"
               error={!!formState.errors.confirmPassword}
               helperText={formState?.errors?.confirmPassword?.message}
@@ -152,4 +163,4 @@ const Register: React.FC = () => {
   );
 };
 
-export default Register;
+export default RegisterCompany;

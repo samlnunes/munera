@@ -11,6 +11,7 @@ export const Content = styled.div`
   align-items: center;
   width: 100%;
   margin-top: 76px;
+  margin-bottom: 50px;
 
   .soon {
     font-size: 16px;

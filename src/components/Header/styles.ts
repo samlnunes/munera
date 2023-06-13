@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface Props {
+  img: string;
+}
+
 export const Container = styled.header`
   display: flex;
   align-items: center;
@@ -64,6 +68,14 @@ export const Nav = styled.nav`
 export const BoxUser = styled.div`
   display: flex;
   gap: 10px;
+  align-items: center;
+
+  a {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    color: #65676b;
+  }
 `;
 
 export const Notifications = styled.div`
@@ -76,13 +88,15 @@ export const Notifications = styled.div`
   border-radius: 50%;
 `;
 
-export const UserProfile = styled.button`
+export const UserProfile = styled.button<Props>`
   width: 40px;
   height: 40px;
-  background-image: url("/nu-icon.png");
+  background-image: ${({ img }) => (img ? `url(${img})` : "none")};
+  background-color: ${({ img }) => (img ? "transparent" : "#043262")};
   background-repeat: no-repeat;
   background-size: contain;
   border-radius: 50%;
   border: none;
   cursor: pointer;
+  font-weight: 700;
 `;

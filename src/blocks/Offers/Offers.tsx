@@ -1,23 +1,20 @@
-import { BoxOffers } from "@/components";
+import { BoxOffers, Loader } from "@/components";
 import { Container } from "./styles";
-import { useEffect, useState } from "react";
+import { useCompanies } from "@/services";
 
 const Offers: React.FC = () => {
-  const [offers, setOffers] = useState([]);
-
-  useEffect(() => {
-    fetch("/api/offers")
-      .then((response) => response.json())
-      .then((offers) => {
-        setOffers(offers);
-      })
-      .catch((error) => console.warn(error));
-  }, []);
+  const { companies, loading } = useCompanies();
 
   return (
     <Container>
-      {offers?.map((offer: any, key: number) => (
-        <BoxOffers key={key} logo={offer.logo} title={offer.title} code={offer.codeCompany}/>
+      <Loader isActive={loading} />
+      {companies?.map((offer: any, key: number) => (
+        <BoxOffers
+          key={key}
+          logo={`${process.env.NEXT_PUBLIC_S3}/logos/${offer?.id_empresa}-logo.png`}
+          title={offer.nome}
+          code={offer.id_empresa}
+        />
       ))}
     </Container>
   );
