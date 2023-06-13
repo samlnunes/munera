@@ -30,7 +30,7 @@ export const Content = styled.div`
   padding: 0 22px;
 
   @media (max-width: 768px) {
-    padding: 0 10px;
+    padding: 0 15px;
   }
 `;
 

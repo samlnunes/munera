@@ -28,6 +28,9 @@ const BoxPublic: React.FC<IPublication> = ({
 
   const formatterDiff = (date: string) => {
     if (dayjsUtc().diff(dayjsUtc.utc(date).local(), "hour") < 1) {
+      if (dayjsUtc().diff(dayjsUtc.utc(date).local(), "minute") < 1)
+        return "Agora";
+
       return `Há ${dayjsUtc().diff(
         dayjsUtc.utc(date).local(),
         "minute"
@@ -59,7 +62,14 @@ const BoxPublic: React.FC<IPublication> = ({
       </Content>
       {midia && (
         <BoxImage>
-          <Image src={midia} alt="" width={0} height={0} sizes="100vw" loading="lazy" />
+          <Image
+            src={midia}
+            alt=""
+            width={0}
+            height={0}
+            sizes="100vw"
+            loading="lazy"
+          />
         </BoxImage>
       )}
       <Favorites>
