@@ -84,3 +84,36 @@ export const BoxInfos = styled.div`
     color: #65676b;
   }
 `;
+
+export const Links = styled.div`
+  border-top: 1px solid #ced0d4;
+
+  h1 {
+    font-weight: 600;
+    font-size: 17px;
+    color: #65676b;
+    margin-top: 16px;
+  }
+
+  ul {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    color: #050505;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: underline;
+
+    :hover {
+      opacity: 0.7;
+    }
+  }
+`;

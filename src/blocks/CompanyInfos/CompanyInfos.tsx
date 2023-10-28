@@ -7,6 +7,7 @@ import {
   ContentLogo,
   BoxBroker,
   BoxInfos,
+  Links,
 } from "./styles";
 import { brokers } from "@/utils/brokers";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -78,6 +79,25 @@ const CompanyInfos: React.FC = () => {
           sequi voluptatum ullam?
         </p>
       </Description>
+      <Links>
+        <h1>Links úteis</h1>
+
+        <ul>
+          <li>
+            <a
+              href="/files/prospecto_definitivo.pdf"
+              download="prospecto definitivo"
+            >
+              Prospecto definitivo
+            </a>
+          </li>
+          <li>
+            <a href="/files/anuncio_de_inicio.pdf" download="anuncio de inicio">
+              Anúncio de início
+            </a>
+          </li>
+        </ul>
+      </Links>
     </Container>
   );
 };

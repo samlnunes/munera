@@ -5,7 +5,7 @@ export const Container = styled.div`
   border-radius: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   padding: 20px 0;
-  width: 50vw;
+  width: 35vw;
 
   p {
     margin-top: 20px;
@@ -68,7 +68,6 @@ export const BoxImage = styled.div`
   justify-content: center;
 
   img {
-    max-height: 640px;
     height: auto;
     max-width: 100%;
     width: auto;

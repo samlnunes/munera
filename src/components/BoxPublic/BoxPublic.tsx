@@ -54,7 +54,9 @@ const BoxPublic: React.FC<IPublication> = ({
             <img src={icon} alt="" loading="lazy" />
           </Link>
           <div>
-            <h1>{empresaName}</h1>
+            <Link href={`/empresas/${empresaId}`}>
+              <h1>{empresaName}</h1>
+            </Link>
             <span>{formatterDiff(date_time)}</span>
           </div>
         </Top>

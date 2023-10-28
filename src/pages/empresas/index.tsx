@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { Header } from "@/components";
 import { Content, SideBar } from "@/styles/styles";
+import { Offers } from "@/blocks";
 
 const Empresas: React.FC = () => {
   return (
@@ -12,8 +13,9 @@ const Empresas: React.FC = () => {
         <link rel="icon" href="/munera-logo.png" />
       </Head>
       <Header />
-      <SideBar left/>
+      <SideBar left />
       <Content>
+        <Offers />
       </Content>
       <SideBar />
     </>

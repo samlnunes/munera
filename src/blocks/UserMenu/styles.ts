@@ -107,22 +107,23 @@ export const Content = styled.div`
   justify-content: center;
 
   .custom-calendar {
-    font-family: Arial, sans-serif;
     height: 500px;
+    width: 50%;
   }
 
   .custom-calendar .rbc-toolbar {
     display: flex;
-    justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
   }
 
   .custom-calendar .rbc-toolbar button {
-    background-color: #043262;
     color: #ffffff;
     border: none;
-    padding: 8px 12px;
-    margin: 0 5px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
   }
 
@@ -130,62 +131,8 @@ export const Content = styled.div`
     background-color: #0369a1;
   }
 
-  .custom-calendar .rbc-header {
-    text-align: center;
-  }
-
-  .custom-calendar .rbc-header + .rbc-header {
-    border-left: none;
-  }
-
-  .custom-calendar .rbc-header .rbc-header-label {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 10px 0;
-  }
-
-  .custom-calendar .rbc-header .rbc-date-cell {
-    font-size: 14px;
-    color: #666666;
-    background-color: #f5f5f5;
-    border: none;
-    padding: 6px;
-    text-align: center;
-  }
-
-  .custom-calendar .rbc-header .rbc-date-cell:hover {
-    background-color: #eaeaea;
-  }
-
-  .custom-calendar .rbc-month-view .rbc-row {
-    display: flex;
-    justify-content: space-between;
-  }
-
   .custom-calendar .rbc-month-view .rbc-row + .rbc-row {
     margin-top: 10px;
-  }
-
-  .custom-calendar .rbc-month-view .rbc-event {
-    background-color: #eaeaea;
-    border-radius: 4px;
-    padding: 4px;
-    font-size: 12px;
-  }
-
-  .rbc-month-view .rbc-today .rbc-event {
-    background-color: #0369a1;
-    color: #ffffff;
-  }
-
-  .rbc-month-view {
-    background-color: #0369a1;
-    color: #ffffff;
-  }
-
-  .rbc-selected-cell {
-    background-color: #0369a1;
-    color: #ffffff;
   }
 
   .rbc-today {
@@ -194,10 +141,14 @@ export const Content = styled.div`
   }
 
   .rbc-off-range-bg {
-    background-color: #87aadd;
+    background-color: #dddddd;
+    opacity: 0.3;
   }
 
   .rbc-event {
-    background-color: #043262 !important;
+    border-radius: 4px;
+    padding: 4px;
+    font-size: 12px;
+    font-weight: 700;
   }
 `;

@@ -5,7 +5,7 @@ export const Container = styled.div`
   border-radius: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   padding: 20px 22px;
-  width: 50vw;
+  width: 35vw;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -80,11 +80,10 @@ export const BoxButton = styled.div`
 
   button {
     background-color: #1974b9;
-    width: 50%;
     color: #fff;
     border: none;
     border-radius: 5px;
-    padding: 10px;
+    padding: 10px 40px;
     cursor: pointer;
     font-style: normal;
     font-weight: 500;

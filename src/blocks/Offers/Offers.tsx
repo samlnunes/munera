@@ -8,9 +8,10 @@ const Offers: React.FC = () => {
   return (
     <Container>
       <Loader isActive={loading} />
-      {companies?.map((offer: any, key: number) => (
+      
+      {companies?.map((offer: any) => (
         <BoxOffers
-          key={key}
+          key={offer.id_empresa}
           logo={`${process.env.NEXT_PUBLIC_S3}/logos/${offer?.id_empresa}-logo.png`}
           title={offer.nome}
           code={offer.id_empresa}

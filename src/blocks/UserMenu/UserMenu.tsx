@@ -4,12 +4,33 @@ import { useEffect, useState } from "react";
 import { Calendar, dayjsLocalizer } from "react-big-calendar";
 import dayjs from "dayjs";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import LogoutIcon from "@mui/icons-material/Logout";
+import "dayjs/locale/pt-br";
+import { ArrowBackIos, ArrowForwardIos, Logout } from "@mui/icons-material";
 
 const localizer = dayjsLocalizer(dayjs);
 interface PropsMenu {
   onClose: () => void;
 }
+
+const CustomToolbar = ({ onNavigate, date }: any) => (
+  <div className="rbc-toolbar">
+    <span className="rbc-btn-group">
+      <button type="button" onClick={() => onNavigate("PREV")}>
+        <ArrowBackIos />
+      </button>
+    </span>
+    <span className="rbc-toolbar-label">
+      {date
+        .toLocaleDateString("pt-BR", { month: "long", year: "numeric" })
+        .toUpperCase()}
+    </span>
+    <span className="rbc-btn-group">
+      <button type="button" onClick={() => onNavigate("NEXT")}>
+        <ArrowForwardIos />
+      </button>
+    </span>
+  </div>
+);
 
 const UserMenu: React.FC<PropsMenu> = ({ onClose }) => {
   const [idCompany, setIdCompany] = useState<string | null>(null);
@@ -47,14 +68,22 @@ const UserMenu: React.FC<PropsMenu> = ({ onClose }) => {
     {
       id: 1,
       title: "Abertura de Capital Nubank",
-      start: dayjs("2023-06-15T10:00:00"),
-      end: dayjs("2023-06-15T12:00:00"),
+      start: dayjs("2023-10-27T10:00:00"),
+      end: dayjs("2023-10-30T10:00:00"),
+      style: {
+        backgroundColor: "purple",
+        color: "white", 
+      },
     },
     {
       id: 2,
       title: "Abertura de Capital PETZ",
-      start: dayjs("2023-06-16T14:00:00"),
-      end: dayjs("2023-06-16T16:00:00"),
+      start: dayjs("2023-10-10T14:00:00"),
+      end: dayjs("2023-10-30T16:00:00"),
+      style: {
+        backgroundColor: "orange", 
+        color: "black", 
+      },
     },
   ];
 
@@ -90,7 +119,7 @@ const UserMenu: React.FC<PropsMenu> = ({ onClose }) => {
           </li>
           <li>
             <button onClick={() => logout()}>
-              Sair <LogoutIcon />
+              Sair <Logout />
             </button>
           </li>
         </MenuTabs>
@@ -102,6 +131,17 @@ const UserMenu: React.FC<PropsMenu> = ({ onClose }) => {
           startAccessor="start"
           endAccessor="end"
           className="custom-calendar"
+          eventPropGetter={(event) => ({
+            style: event.style,
+          })}
+          components={{
+            toolbar: (toolbarProps) => (
+              <CustomToolbar
+                onNavigate={toolbarProps.onNavigate}
+                date={toolbarProps.date}
+              />
+            ),
+          }}
         />
       </Content>
       <button onClick={onClose}>

@@ -15,21 +15,17 @@ export const Container = styled.header`
   position: fixed;
   top: 0;
   z-index: 9;
-
-  img {
-    width: 50px;
-  }
-
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
   @media (max-width: 768px) {
     padding: 0 4vw;
   }
 `;
 
 export const Nav = styled.nav`
-  width: 50vw;
+  width: 35vw;
   height: 100%;
   display: flex;
-  margin-left: 39px;
 
   ul {
     width: 100%;
@@ -46,17 +42,20 @@ export const Nav = styled.nav`
     width: 100%;
     padding: 0 20px;
     white-space: nowrap;
+    cursor: pointer;
+    font-size: 16px;
+    color: #65676b;
+    transition: 0.5s;
+    font-weight: 600;
 
     &.active {
       border-bottom: 3px solid #1974b9;
+      color: #1974b9;
     }
 
-    a {
-      font-style: normal;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 19px;
-      color: #65676b;
+    :hover {
+      background-color: #e4e6e9;
+      transition: 0.5s;
     }
   }
 
@@ -68,7 +67,8 @@ export const Nav = styled.nav`
 export const BoxUser = styled.div`
   display: flex;
   gap: 10px;
-  align-items: center;
+  justify-content: flex-end;
+  width: 150px;
 
   a {
     font-weight: 500;

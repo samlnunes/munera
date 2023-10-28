@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Container, Nav, BoxUser, UserProfile, Notifications } from "./styles";
-import NotificationsIcon from "@mui/icons-material/Notifications";
+import { Notifications as NotificationsIcon } from "@mui/icons-material";
 import { useUser } from "@/services";
 
 export default function Header() {
@@ -37,41 +37,40 @@ export default function Header() {
       href: "/oferta-publica",
     },
     {
-      id: "ofertas",
-      label: "Ofertas",
-      href: "/ofertas",
+      id: "empresas",
+      label: "Empresas",
+      href: "/empresas",
     },
   ];
 
   return (
     <>
       <Container>
-        <Link href='/'>
-          <img src="/munera-logo.png" alt="" loading="lazy" />
+        <Link href="/">
+          <img src="/munera-logo-slogan.png" alt="" loading="lazy" />
         </Link>
         <Nav>
           <ul>
-            {menuItems.map((item, key) => (
-              <li
-                key={key}
-                className={
-                  router.asPath === "/" && item.id === "home"
-                    ? "active"
-                    : router.asPath.includes(item.id)
-                    ? "active"
-                    : ""
-                }
-              >
-                <Link href={item.href} legacyBehavior>
+            {menuItems.map((item) => (
+              <Link href={item.href} key={item.id} legacyBehavior>
+                <li
+                  className={
+                    router.asPath === "/" && item.id === "home"
+                      ? "active"
+                      : router.asPath.includes(item.id)
+                      ? "active"
+                      : ""
+                  }
+                >
                   {item.label}
-                </Link>
-              </li>
+                </li>
+              </Link>
             ))}
           </ul>
         </Nav>
         <BoxUser>
           <Notifications>
-            <NotificationsIcon />
+            <NotificationsIcon color="action" />
           </Notifications>
           {idUser || idCompany ? (
             <UserProfile
