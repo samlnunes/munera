@@ -17,7 +17,7 @@ export const Container = styled.header`
   z-index: 9;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-  button {
+  .menu-mobile {
     background-color: transparent;
     border: none;
 
