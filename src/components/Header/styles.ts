@@ -66,6 +66,7 @@ export const Nav = styled.nav`
 
 export const BoxUser = styled.div`
   display: flex;
+  align-items: center;
   gap: 10px;
   justify-content: flex-end;
   width: 150px;
