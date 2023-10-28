@@ -25,6 +25,7 @@ export const Content = styled.div`
   @media (max-width: 768px) {
     gap: 0;
     margin-top: 56px;
+    margin-bottom: 0;
   }
 `;
 
@@ -38,5 +39,36 @@ export const SideBar = styled.div<Props>`
 
   @media (max-width: 768px) {
     display: none;
+  }
+`;
+
+export const NotPublics = styled.div`
+  background: #ffffff;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  padding: 20px 0;
+  width: 35vw;
+
+  p {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    color: #6a6a6a;
+  }
+
+  img {
+    margin-top: 24px;
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    border-radius: 0;
+    padding: 10px 0;
+
+    p {
+      margin-top: 10px;
+    }
   }
 `;

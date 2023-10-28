@@ -11,6 +11,7 @@ import {
 } from "./styles";
 import { brokers } from "@/utils/brokers";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { descriptions } from "@/helpers/descriptionCompany";
 
 interface ICompany {
   nome: string;
@@ -48,15 +49,17 @@ const CompanyInfos: React.FC = () => {
   return (
     <Container>
       <Top>
-        <ContentLogo>
-          <img
-            src={`${process.env.NEXT_PUBLIC_S3}/logos/${companyInfos?.id_empresa}-logo.png`}
-            alt=""
-          />
-        </ContentLogo>
+        {Number(companyInfos?.id_empresa) < 15 && (
+          <ContentLogo>
+            <img
+              src={`${process.env.NEXT_PUBLIC_S3}/logos/${companyInfos?.id_empresa}-logo.png`}
+              alt=""
+            />
+          </ContentLogo>
+        )}
         <BoxInfos>
           <div>
-            <h1>{companyInfos?.nome} </h1>
+            <h1>{companyInfos?.nome}</h1>
             <button onClick={() => setCurtidasNew(curtidasNew + 1)}>
               <FavoriteIcon style={{ color: "#FF0000" }} />
             </button>
@@ -73,10 +76,10 @@ const CompanyInfos: React.FC = () => {
       </Top>
       <Description>
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sapiente
-          sint esse rerum eum accusantium veniam quibusdam, nemo numquam
-          voluptates! Expedita velit quos veritatis, nobis repellendus inventore
-          sequi voluptatum ullam?
+          {descriptions.find(
+            (element) => element.code === Number(companyInfos?.id_empresa)
+          )?.description ??
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta placeat explicabo, laborum ullam, nisi laudantium officiis doloremque amet ratione vitae odio quia mollitia consequuntur reiciendis voluptates dolorem error natus hic."}
         </p>
       </Description>
       <Links>

@@ -4,7 +4,7 @@ export const Container = styled.div`
   background-color: #ffffff;
   border-radius: 10px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 20px;
   padding: 30px;
   transition: 0.5s;
@@ -12,6 +12,10 @@ export const Container = styled.div`
   :hover {
     transition: 0.5s;
     background-color: #e4e6e9;
+  }
+
+  @media (max-width: 768px) {
+    border-bottom: 1px solid #e4e6e9;
   }
 `;
 
@@ -39,5 +43,20 @@ export const Content = styled.div`
     font-size: 14px;
     line-height: 19px;
     color: #6a6a6a;
+  }
+`;
+
+export const FakeImage = styled.div`
+  background-color: #1974b9;
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    font-size: 24px;
+    font-weight: 600;
   }
 `;

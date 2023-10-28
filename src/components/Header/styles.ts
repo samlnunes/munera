@@ -16,7 +16,16 @@ export const Container = styled.header`
   top: 0;
   z-index: 9;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
+
+  button {
+    background-color: transparent;
+    border: none;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
   @media (max-width: 768px) {
     padding: 0 4vw;
   }
@@ -103,5 +112,66 @@ export const UserProfile = styled.button<Props>`
 
   @media (max-width: 768px) {
     display: none;
+  }
+`;
+
+export const MenuMobile = styled.div`
+  width: 100%;
+  background-color: #f0f2f5;
+  z-index: 10;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 4vw;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+export const Top = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 56px;
+
+  svg {
+    color: #000;
+  }
+
+  h1 {
+    color: #000;
+    font-size: 22px;
+    font-weight: 700;
+  }
+`;
+
+export const NavMobile = styled.div`
+  margin-top: 20px;
+
+  ul {
+    flex-wrap: wrap;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+  }
+
+  li {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 12px;
+    border-radius: 8px;
+    color: #000;
+    list-style: none;
+    background-color: #fff;
+    font-weight: 600;
+    height: 91px;
+  }
+
+  svg {
+    color: #1974b9;
   }
 `;

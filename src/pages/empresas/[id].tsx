@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { BoxPublic, Header, Loader } from "@/components";
-import { Content, SideBar } from "@/styles/styles";
+import { Content, SideBar, NotPublics } from "@/styles/styles";
 import { CompanyInfos } from "@/blocks";
 import { IPublication } from "@/components/BoxPublic/BoxPublic";
 import { usePosts } from "@/services";
@@ -35,18 +35,25 @@ export default function Empresa() {
         <CompanyInfos />
       </SideBar>
       <Content>
-        {postagensFiltradas?.map((publication: IPublication, key) => (
-          <BoxPublic
-            key={key}
-            empresaName={publication.empresaName}
-            icon={`${process.env.NEXT_PUBLIC_S3}/logos/${publication.empresaId}-logo.png`}
-            date_time={publication.date_time}
-            legenda={publication.legenda}
-            midia={publication.midia}
-            empresaId={publication.empresaId}
-            curtidas={publication.curtidas}
-          />
-        ))}
+        {postagensFiltradas.length > 0 ? (
+          postagensFiltradas?.map((publication: IPublication, key) => (
+            <BoxPublic
+              key={key}
+              empresaName={publication.empresaName}
+              icon={`${process.env.NEXT_PUBLIC_S3}/logos/${publication.empresaId}-logo.png`}
+              date_time={publication.date_time}
+              legenda={publication.legenda}
+              midia={publication.midia}
+              empresaId={publication.empresaId}
+              curtidas={publication.curtidas}
+            />
+          ))
+        ) : (
+          <NotPublics>
+            <p>Ainda não tem nada por aqui! :)</p>
+            <img src="/em-breve.png" />
+          </NotPublics>
+        )}
       </Content>
       <SideBar />
     </>
