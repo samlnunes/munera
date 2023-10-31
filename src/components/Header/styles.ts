@@ -88,6 +88,19 @@ export const BoxUser = styled.div`
   }
 `;
 
+export const ButtonLogout = styled.button`
+  background-color: transparent;
+  border: none;
+
+  svg {
+    color: #000;
+  }
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
 export const Notifications = styled.div`
   width: 40px;
   height: 40px;
@@ -96,6 +109,10 @@ export const Notifications = styled.div`
   justify-content: center;
   background-color: #e4e6eb;
   border-radius: 50%;
+
+  svg {
+    color: #000;
+  }
 `;
 
 export const UserProfile = styled.button<Props>`

@@ -11,6 +11,7 @@ import {
   MenuMobile,
   Top,
   NavMobile,
+  ButtonLogout,
 } from "./styles";
 import {
   Notifications as NotificationsIcon,
@@ -19,6 +20,7 @@ import {
   Home,
   LocalOffer,
   Apartment,
+  Logout,
 } from "@mui/icons-material";
 import { useUser } from "@/services";
 
@@ -29,6 +31,18 @@ export default function Header() {
   const [idUser, setIdUser] = useState<string | null>(null);
   const router = useRouter();
   const { user } = useUser(Number(idUser));
+
+  const logout = () => {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("id-user");
+      localStorage.removeItem("id-company");
+      const message = {
+        key: "id-local",
+        value: "",
+      };
+      window.postMessage(message, "*");
+    }
+  };
 
   const iniciais = user?.nome
     .split(" ")
@@ -128,16 +142,21 @@ export default function Header() {
             <NotificationsIcon color="action" />
           </Notifications>
           {idUser || idCompany ? (
-            <UserProfile
-              onClick={() => setMenuShow(true)}
-              img={
-                idCompany
-                  ? `${process.env.NEXT_PUBLIC_S3}/logos/${idCompany}-logo.png`
-                  : ""
-              }
-            >
-              {iniciais}
-            </UserProfile>
+            <>
+              <UserProfile
+                onClick={() => setMenuShow(true)}
+                img={
+                  idCompany
+                    ? `${process.env.NEXT_PUBLIC_S3}/logos/${idCompany}-logo.png`
+                    : ""
+                }
+              >
+                {iniciais}
+              </UserProfile>
+              <ButtonLogout onClick={() => logout()}>
+                <Logout />
+              </ButtonLogout>
+            </>
           ) : (
             <Link href="/login">Entrar</Link>
           )}
